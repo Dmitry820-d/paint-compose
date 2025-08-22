@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+package com.example.paintcompose.datastore;
+
+message MyPreferences {
+  string my_key = 1;
+}
