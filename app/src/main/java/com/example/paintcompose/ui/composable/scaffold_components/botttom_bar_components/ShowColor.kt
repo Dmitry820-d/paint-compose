@@ -25,7 +25,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.example.paintcompose.ui.model.DrawSettings
+import com.example.paintcompose.ui.model.DrawSettingsUI
 import com.example.paintcompose.ui.theme.colorBackground
 import com.example.paintcompose.ui.theme.colorBorder
 import com.example.paintcompose.ui.theme.colorText
@@ -38,7 +38,7 @@ import com.github.skydoves.colorpicker.compose.rememberColorPickerController
 
 @Composable
 fun ShowColor(
-    currentDrawSettings: MutableState<DrawSettings>,
+    currentDrawSettings: MutableState<DrawSettingsUI>,
     onSelectedItemColor: (Color) -> Unit,
 ){
     Box(
@@ -86,7 +86,7 @@ private fun ItemColor(
 
 @Composable
 private fun ShowColorPicker(
-    currentDrawSettings: MutableState<DrawSettings>,
+    currentDrawSettings: MutableState<DrawSettingsUI>,
     onSelectedItemColor: (Color) -> Unit
 ){
 

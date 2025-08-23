@@ -4,9 +4,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.StrokeCap
 
-data class DrawSettings(
+data class DrawSettingsUI(
     val path: Path = Path(),
     val color: Color = Color.Black,
     val width: Float = 5f,
     val brush: StrokeCap = StrokeCap.Round
+
 )

@@ -16,16 +16,16 @@ import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.dp
-import com.example.paintcompose.ui.model.DrawSettings
+import com.example.paintcompose.ui.model.DrawSettingsUI
 
 @Composable
 fun ShowCanvas(
-    currentDrawSettingsState: MutableState<DrawSettings>,
+    currentDrawSettingsState: MutableState<DrawSettingsUI>,
 ) {
 
     var tempPath = Path()
     val listDrawSettingsState = remember {
-        mutableStateListOf(DrawSettings())
+        mutableStateListOf(DrawSettingsUI())
     }
 
     Box {

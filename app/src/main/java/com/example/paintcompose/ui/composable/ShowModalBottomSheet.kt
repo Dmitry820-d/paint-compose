@@ -9,7 +9,7 @@ import com.example.paintcompose.ui.composable.scaffold_components.botttom_bar_co
 import com.example.paintcompose.ui.composable.scaffold_components.botttom_bar_components.ShowColor
 import com.example.paintcompose.ui.composable.scaffold_components.botttom_bar_components.ShowWidth
 import com.example.paintcompose.ui.model.BottomSheetAction
-import com.example.paintcompose.ui.model.DrawSettings
+import com.example.paintcompose.ui.model.DrawSettingsUI
 import com.example.paintcompose.ui.model.bottom_menu.BottomMenuState
 import com.example.paintcompose.ui.theme.colorBackground
 
@@ -17,7 +17,7 @@ import com.example.paintcompose.ui.theme.colorBackground
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ShowModalBottomSheet(
-    currentDrawSettings: MutableState<DrawSettings>,
+    currentDrawSettings: MutableState<DrawSettingsUI>,
     state: MutableState<BottomMenuState>,
     modalBottomSheetState: SheetState,
     bottomSheetAction: (BottomSheetAction) -> Unit,

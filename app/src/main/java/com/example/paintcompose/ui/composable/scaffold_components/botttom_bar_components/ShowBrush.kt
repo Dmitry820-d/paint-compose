@@ -30,9 +30,9 @@ fun ShowBrush(
             modifier = Modifier.align(Alignment.Center)
         ) {
             val listBrush = BarUtil.getListBrush()
-            listBrush.forEach {
+            listBrush.forEach { strokeCap ->
                 ItemBrush {
-                    onSelectedItemBrush(StrokeCap.Square)
+                    onSelectedItemBrush(strokeCap)
                 }
             }
         }

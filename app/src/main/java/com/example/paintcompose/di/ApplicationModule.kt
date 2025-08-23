@@ -6,6 +6,8 @@ import com.example.paintcompose.data.ImageRecorder
 import com.example.paintcompose.data.datastore.ProtoDataStoreManager
 import com.example.paintcompose.data.repository.ImageRepository
 import com.example.paintcompose.data.repository.SettingsRepository
+import com.example.paintcompose.ui.mapper.DrawSettingsDataToDrawSettingsUIMapper
+import com.example.paintcompose.ui.mapper.DrawSettingsUIToDrawSettingsDataMapper
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -50,6 +52,18 @@ interface ApplicationModule {
         @Singleton
         fun provideSettingsRepository(protoDataStoreManager: ProtoDataStoreManager): SettingsRepository {
             return SettingsRepository(protoDataStoreManager = protoDataStoreManager)
+        }
+
+        @Provides
+        @Singleton
+        fun provideDrawSettingsUIToDataMapper(): DrawSettingsUIToDrawSettingsDataMapper {
+            return DrawSettingsUIToDrawSettingsDataMapper()
+        }
+
+        @Provides
+        @Singleton
+        fun provideDrawSettingsDataToUIMapper(): DrawSettingsDataToDrawSettingsUIMapper {
+            return DrawSettingsDataToDrawSettingsUIMapper()
         }
 
     }

@@ -16,8 +16,7 @@ fun ShowFavoriteImage(mainViewModel: MainViewModel) {
     ){
         Text(
             modifier = Modifier.align(Alignment.Center),
-            text = mainViewModel.widthState.floatValue.toString()
+            text = mainViewModel.currentDrawSettingsState.value.width.toString()
         )
     }
-
 }
