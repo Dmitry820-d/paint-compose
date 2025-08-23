@@ -3,7 +3,9 @@ package com.example.paintcompose.di
 import android.content.Context
 import com.example.paintcompose.data.ImageLoader
 import com.example.paintcompose.data.ImageRecorder
-import com.example.paintcompose.data.ImageRepository
+import com.example.paintcompose.data.datastore.ProtoDataStoreManager
+import com.example.paintcompose.data.repository.ImageRepository
+import com.example.paintcompose.data.repository.SettingsRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -38,7 +40,17 @@ interface ApplicationModule {
             )
         }
 
+        @Provides
+        @Singleton
+        fun provideProtoDataStoreManager(@ApplicationContext context: Context): ProtoDataStoreManager {
+            return ProtoDataStoreManager(context = context)
+        }
 
+        @Provides
+        @Singleton
+        fun provideSettingsRepository(protoDataStoreManager: ProtoDataStoreManager): SettingsRepository {
+            return SettingsRepository(protoDataStoreManager = protoDataStoreManager)
+        }
 
     }
 }

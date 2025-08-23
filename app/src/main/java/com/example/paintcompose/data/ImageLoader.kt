@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.content.ContentUris
 import android.content.Context
 import android.provider.MediaStore
-import com.example.paintcompose.data.ImageRepository.ImageFile
+import com.example.paintcompose.data.repository.ImageRepository.ImageFile
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject

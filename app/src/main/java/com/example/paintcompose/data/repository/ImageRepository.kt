@@ -1,9 +1,11 @@
-package com.example.paintcompose.data
+package com.example.paintcompose.data.repository
 
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Build
 import androidx.annotation.RequiresApi
+import com.example.paintcompose.data.ImageLoader
+import com.example.paintcompose.data.ImageRecorder
 
 class ImageRepository(val imageRecorder: ImageRecorder, val imageLoader: ImageLoader) {
     @RequiresApi(Build.VERSION_CODES.Q)

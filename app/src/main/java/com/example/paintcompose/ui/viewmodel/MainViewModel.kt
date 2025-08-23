@@ -5,30 +5,39 @@ import android.graphics.Bitmap
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.paintcompose.data.ImageRepository
+import com.example.paintcompose.data.datastore.UserSettings
+import com.example.paintcompose.data.repository.ImageRepository
+import com.example.paintcompose.data.repository.SettingsRepository
 import com.example.paintcompose.ui.model.bottom_menu.BottomMenuState
 import com.example.paintcompose.ui.model.bottom_menu.BottomMenuItem
 import com.example.paintcompose.ui.model.BottomSheetAction
 import com.example.paintcompose.ui.model.ImageUI
 import com.example.paintcompose.ui.model.DrawSettings
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor (
-    private val imageRepository: ImageRepository
+    private val imageRepository: ImageRepository,
+    private val settingsRepository: SettingsRepository
 ): ViewModel() {
 
     val listImageState = mutableStateOf<List<ImageUI>>(emptyList())
 
+    val widthState = mutableFloatStateOf(0f)
+
+
     init {
         loadImages()
+        getUserSettingsFromDataStore()
     }
 
     val bottomMenuState = mutableStateOf<BottomMenuState>(BottomMenuState.None)
@@ -43,13 +52,31 @@ class MainViewModel @Inject constructor (
         }
     }
 
+    private fun getUserSettingsFromDataStore(){
+        viewModelScope.launch {
+            settingsRepository.getUserSettings().collect { userSettings ->
+                //delay(2000)
+                currentDrawSettingsState.value = currentDrawSettingsState.value.copy(width = userSettings.width)
+                widthState.floatValue = userSettings.width
+            }
+        }
+    }
+
+
+
+
     private fun updateColor(color: Color) {
         currentDrawSettingsState.value = currentDrawSettingsState.value.copy(color = color)
     }
 
     private fun updateWidth(width: Float) {
         val resultWidth = if(width < 1f) 1f else width
-        currentDrawSettingsState.value = currentDrawSettingsState.value.copy(width = resultWidth)
+        //currentDrawSettingsState.value = currentDrawSettingsState.value.copy(width = resultWidth)
+
+        val userSetting = UserSettings(width = resultWidth)
+        viewModelScope.launch {
+            settingsRepository.setSettings(settings = userSetting)
+        }
     }
 
     private fun updateBrush(cap: StrokeCap) {

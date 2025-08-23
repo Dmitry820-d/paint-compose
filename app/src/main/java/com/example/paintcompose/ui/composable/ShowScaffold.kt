@@ -26,6 +26,7 @@ import com.example.paintcompose.ui.composable.scaffold_components.BottomBar
 import com.example.paintcompose.ui.composable.scaffold_components.ShowDrawerLayout
 import com.example.paintcompose.ui.composable.scaffold_components.ShowTopAppBar
 import com.example.paintcompose.ui.composable.screens.ShowCanvas
+import com.example.paintcompose.ui.composable.screens.ShowFavoriteImage
 import com.example.paintcompose.ui.composable.screens.ShowListImage
 import com.example.paintcompose.ui.navigation.Screen
 import com.example.paintcompose.ui.viewmodel.MainViewModel
@@ -118,7 +119,7 @@ fun ShowScaffold(
                         ShowListImage(listImagesState.value)
                     }
                     composable<Screen.Favorite> { navBackEntry ->
-                        //not implemented
+                        ShowFavoriteImage(mainViewModel = mainViewModel)
                     }
                 }
             }

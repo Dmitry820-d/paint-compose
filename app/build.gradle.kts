@@ -60,6 +60,7 @@ dependencies {
 
     //material
     implementation(libs.google.compose.material.material)
+    implementation(libs.google.android.material.material)
     implementation(libs.androidx.material3)
 
     //coil

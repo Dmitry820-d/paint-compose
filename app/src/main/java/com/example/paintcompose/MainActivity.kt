@@ -7,6 +7,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.platform.ComposeView
 import androidx.datastore.core.DataStore
 import com.example.paintcompose.ui.composable.ShowScaffold
@@ -31,10 +32,9 @@ class MainActivity : ComponentActivity() {
 
         val composeView = findViewById<ComposeView>(R.id.compose_view)
 
-
-        val preferencesKey =
-
         composeView.setContent {
+
+
             PaintComposeTheme {
                 ShowScaffold(
                     mainViewModel = mainViewModel,
@@ -44,23 +44,5 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
-
-
-//class PreferencesRepository(private val dataStore: DataStore<MyPreferences>) {
-//
-//    // Получаем значение ключа
-//    fun getMyKey(): Flow<String?> =
-//        dataStore.data.map { preferences ->
-//            preferences.myKey
-//        }
-//
-//    // Устанавливаем новое значение ключа
-//    suspend fun setMyKey(newValue: String) {
-//        dataStore.updateData { currentPreferences ->
-//            currentPreferences.toBuilder().setMyKey(newValue).build()
-//        }
-//    }
-//}
 
 
