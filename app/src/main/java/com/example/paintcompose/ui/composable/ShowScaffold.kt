@@ -3,7 +3,6 @@ package com.example.paintcompose.ui.composable
 import android.graphics.Bitmap
 import android.os.Build
 import android.util.Log
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
@@ -16,6 +15,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.core.view.drawToBitmap
@@ -30,7 +30,6 @@ import com.example.paintcompose.ui.composable.screens.ShowFavoriteImage
 import com.example.paintcompose.ui.composable.screens.ShowListImage
 import com.example.paintcompose.ui.navigation.Screen
 import com.example.paintcompose.ui.viewmodel.MainViewModel
-import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
